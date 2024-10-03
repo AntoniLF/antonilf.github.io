@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Usuario</title>
+    <style>
+        body {
+            background-color: #1E3A5F;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            text-align: center;
+        }
+        #progress {
+            width: 300px;
+            height: 30px;
+            border: 1px solid #fff;
+            margin-top: 20px;
+        }
+        #progressBar {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #user-info {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bienvenido</h1>
+    <button id="viewAd">Ver Anuncio</button>
+
+    <div id="progress">
+        <div id="progressBar"></div>
+    </div>
+    <p>Anuncios vistos: <span id="adCount">0</span>/50</p>
+
+    <div id="user-info">
+        <h2>Información del usuario</h2>
+        <p>Email: <span id="email">user@example.com</span></p>
+        <p>Nombre: <span id="name">Nombre del Usuario</span></p>
+    </div>
+
+    <script>
+        let adCount = 0;
+        document.getElementById('viewAd').addEventListener('click', function() {
+            adCount++;
+            document.getElementById('adCount').innerText = adCount;
+            let progress = (adCount / 50) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            if (adCount >= 50) {
+                alert('¡Has visto 50 anuncios!');
+            }
+        });
+
+        // Aquí se colocarían los datos del usuario autenticado (Google OAuth)
+        document.getElementById('email').innerText = 'user@example.com';
+        document.getElementById('name').innerText = 'Nombre del Usuario';
+    </script>
+
+</body>
+</html>
